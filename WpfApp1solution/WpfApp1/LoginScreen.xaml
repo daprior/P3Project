@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfApp1.LoginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="800" FontSize="14" Background="#FF6AB1CF">
+
+    <Border Background="#2e3137" CornerRadius="20" Margin="20">
+        <Grid>
+            <StackPanel Margin="20">
+
+                <Label Content="Login" Foreground="White" FontSize="25" HorizontalContentAlignment="Center"/>
+
+                <Separator></Separator>
+
+                <Label Content="Username" Foreground="White" FontSize="25" HorizontalContentAlignment="Center"/>
+
+                <TextBox x:Name="txtUsername" Margin="100 0" FontSize="18" BorderThickness="2" BorderBrush="White" Background="Gray" />
+
+                <Label Content="Password" Foreground="White" FontSize="25" HorizontalContentAlignment="Center"/>
+
+                <PasswordBox Name="txtPassword" Margin="100 0" FontSize="18" BorderThickness="2" BorderBrush="White" Background="Gray" />
+
+                <Button x:Name="btnSubmit" Content="Submit" Margin="200 50" Background="Gray" FontSize="18" BorderBrush="White" Click="btnLogin.Click" Foreground="White" Height="35"/>
+
+            </StackPanel>
+
+            <StackPanel Width="100" HorizontalAlignment="Right">
+                <Button Margin="40,10,10,0" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#FF6AB1CF" Background="Gray" ToolTip="Close" x:Name="BtnExit" Click="btnExit_Click" Height="45" Width="Auto">
+                    <materialDesign:PackIcon Kind="Close" Width="30" Height="30"/>
+
+                </Button>
+
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>
