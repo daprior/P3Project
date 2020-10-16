@@ -12,7 +12,7 @@
         <Grid>
             <StackPanel Margin="20">
 
-                <Label Content="Login" Foreground="Blue" FontSize="25" HorizontalContentAlignment="Center"/>
+                <Label Content="Login" Foreground="LightBlue" FontSize="25" HorizontalContentAlignment="Center"/>
 
                 <Separator></Separator>
 
