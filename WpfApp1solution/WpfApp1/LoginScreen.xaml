@@ -22,9 +22,9 @@
 
                 <Label Content="Password" Foreground="White" FontSize="25" HorizontalContentAlignment="Center"/>
 
-                <PasswordBox Name="txtPassword" Margin="100 0" FontSize="18" BorderThickness="2" BorderBrush="White" Background="Gray" />
+                <TextBox Name="txtPassword" Margin="100 0" FontSize="18" BorderThickness="2" BorderBrush="White" Background="Gray" />
 
-                <Button x:Name="btnSubmit" Content="Submit" Margin="200 50" Background="Gray" FontSize="18" BorderBrush="White" Click="btnLogin.Click" Foreground="White" Height="35"/>
+                <Button x:Name="btnSubmit" Content="Submit" Click="btnLogin_Click" Margin="200 50" Background="Gray" FontSize="18" BorderBrush="White" Foreground="White" Height="35"/>
 
             </StackPanel>
 
