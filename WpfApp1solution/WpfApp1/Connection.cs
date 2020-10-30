@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace WpfApp1
         MySql.Data.MySqlClient.MySqlConnection conn;
         string myConnectionString;
         static string host = "localhost";
-        static string database = "projectgroup";
+        static string database = "projectgroup";//123123
         static string UID = "root";
         static string password = "dtn38hyj";
         public static string strProvider = "server=" + host + ";Database=" + database + ";User ID=" + UID + ";Password=" + password;
