@@ -18,7 +18,7 @@ using MySql.Data.MySqlClient;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for LoginScreen.xaml
+    /// Interaction logic for LoginScreen.xaml prut
     /// </summary>
     public partial class LoginScreen : Window
     {
