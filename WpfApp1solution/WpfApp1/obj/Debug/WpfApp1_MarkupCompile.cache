@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\danie\OneDrive\Skrivebord\GithubDesktop\P3Project\WpfApp1solution\WpfApp1\App.xaml
-3918434172
+11780441496
 
-112029465766
+23-1155181926
 1401761032896
-LoginScreen.xaml;MainWindow.xaml;MenuAdmin.xaml;
+KitchenForm.xaml;LoginScreen.xaml;MainWindow.xaml;MenuAdmin.xaml;TableMenuForm.xaml;Views\AdminMenuView.xaml;Views\AdminTableView.xaml;Views\CallWaiterView.xaml;Views\Drinks.xaml;Views\FirstOrderView.xaml;Views\Food.xaml;
 
 False
 

@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
 using MySql.Data.MySqlClient;
+using System.Data;
+using WpfApp1.ViewModels;
 
 namespace WpfApp1
 {
@@ -22,8 +24,8 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginScreen : Window
     {
-        connection con = new connection();
-        string id, username, password, role;
+
+
         public LoginScreen()
         {
             InitializeComponent();
@@ -36,42 +38,39 @@ namespace WpfApp1
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            try
+            MySqlConnection con = new MySqlConnection(@"server = localhost; user id = root; password = dtn38hyj; database = projectgroup");
+            MySqlDataAdapter sda = new MySqlDataAdapter("Select count(*) from users where Username ='" + txtUsername.Text + "' and Password ='" + txtPassword.Text + "'", con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            if(dt.Rows[0][0].ToString() == "1")
             {
-                if (txtUsername.Text != "" && txtPassword.Text != "")
+                MySqlDataAdapter sda1 = new MySqlDataAdapter("Select Role from users where Username ='" + txtUsername.Text + "' and Password ='" + txtPassword.Text + "'", con);
+                DataTable dt1 = new DataTable();
+                sda1.Fill(dt1);
+                if(dt1.Rows[0][0].ToString() == "admin")
                 {
 
-                    con.Open();
-                    string query = "select Role,Username,Password from users WHERE Username ='" + txtUsername.Text + "' AND Password ='" + txtPassword.Text + "'";
-                    MySqlDataReader row;
-                    row = con.ExecuteReader(query);
-                    if (row.HasRows)
-                    {
-                        while (row.Read())
-                        {
-                            username = row["Username"].ToString();
-                            password = row["Password"].ToString();
-                            role = row["Role"].ToString();
-                        }
-                        //MessageBox.Show(role);
-                        this.Hide();
-                        MenuAdmin w1 = new MenuAdmin();
-                        w1.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Data not found", "Information");
-                    }
+                    MenuAdmin ma = new MenuAdmin();
+                    ma.Show();
+                    this.Hide();
+
                 }
-                else
+                if (dt1.Rows[0][0].ToString() == "kitchen")
                 {
-                    MessageBox.Show("Username or Password is empty", "Information");
+                    KitchenForm ma1 = new KitchenForm();
+                    ma1.Show();
+                    this.Hide();
+                }
+                if (dt1.Rows[0][0].ToString() == "table")
+                {
+                    TableMenuForm ma2 = new TableMenuForm();
+                    ma2.DataContext = new TableMenuViewModel();
+                    ma2.Show();
+                    this.Hide();
                 }
             }
-            catch
-            {
-                MessageBox.Show("Connection Error", "Information");
-            }
+
         }
     }
 }

@@ -5,13 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:viewmodels="clr-namespace:WpfApp1.ViewModels"
+        xmlns:views="clr-namespace:WpfApp1.Views"
         mc:Ignorable="d"
-        Title="MenuAdmin" Height="450" Width="800" Background="#FF6AB1CF">
+        Title="MenuAdmin" Height="900" Width="1600" Background="#2e3137">
+
+    <Window.Resources>
+
+        <DataTemplate x:Name="AdminMenuViewTemplate" DataType="{x:Type viewmodels:MenuViewModel}">
+            <views:AdminMenuView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="AdminTableViewTemplate" DataType="{x:Type viewmodels:TableViewModel}">
+            <views:AdminTableView DataContext="{Binding}"/>
+        </DataTemplate>
+
+    </Window.Resources>
+
     <Grid>
-        <Border Background="#2e3137" CornerRadius="20" Margin="20">
-            
-            
-            
-        </Border>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <Button Content="Menu" Click="btnMenu_Click" Background="#FF6AB1CF"></Button>
+            <Button Content="Table" Click="btnTable_Click" Background="#FF6AB1CF"></Button>
+        </StackPanel>
+
+        <ContentControl  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5"  Content="{Binding}"/>
+
+
     </Grid>
 </Window>

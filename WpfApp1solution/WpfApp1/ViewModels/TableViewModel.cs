@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp1
+namespace WpfApp1.ViewModels
 {
-    class Table
+    public class TableViewModel
     {
+
+        
     }
 }

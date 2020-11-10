@@ -11,6 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
+using System.Data;
+using System.Windows.Navigation;
+using System.IO;
+using WpfApp1.ViewModels;
 
 namespace WpfApp1
 {
@@ -22,6 +27,28 @@ namespace WpfApp1
         public MenuAdmin()
         {
             InitializeComponent();
+
         }
+
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new MenuViewModel();
+        }
+
+        private void btnTable_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new TableViewModel();
+        }
+
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            MenuAdmin newWindow = new MenuAdmin();
+            Application.Current.MainWindow = newWindow;
+            newWindow.Show();
+            this.Close();
+        }
+
     }
 }

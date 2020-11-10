@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800" FontSize="14" Background="#FF6AB1CF">
+        Title="Login" Height="900" Width="1600" FontSize="14" Background="#FF6AB1CF">
 
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
         <Grid>
@@ -23,6 +23,8 @@
                 <Label Content="Password" Foreground="White" FontSize="25" HorizontalContentAlignment="Center"/>
 
                 <TextBox Name="txtPassword" Margin="100 0" FontSize="18" BorderThickness="2" BorderBrush="White" Background="Gray" />
+
+                <Label Name="Label3" Content="hey" Foreground="LightBlue" FontSize="25" HorizontalContentAlignment="Center"/>
 
                 <Button x:Name="btnSubmit" Content="Submit" Click="btnLogin_Click" Margin="200 50" Background="Gray" FontSize="18" BorderBrush="White" Foreground="White" Height="35"/>
 
