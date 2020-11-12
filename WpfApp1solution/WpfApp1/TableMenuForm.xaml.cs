@@ -18,6 +18,7 @@ using System.Security.Cryptography.X509Certificates;
 using Org.BouncyCastle.Asn1.BC;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using WpfApp1.Models;
 
 namespace WpfApp1
 {
@@ -27,162 +28,50 @@ namespace WpfApp1
     public partial class TableMenuForm : Window
     {
 
-        KitchenForm kitchenform = new KitchenForm();
-
         public TableMenuForm()
         {
             InitializeComponent();
+
         }
 
-        private void btnFood_Click(object sender, RoutedEventArgs e)
-        {
-            contentControl.Content = new FoodViewModel((DataContext as TableMenuViewModel));
-        }
 
-        private void btnDrink_Click(object sender, RoutedEventArgs e)
-        {
-            contentControl.Content = new DrinksViewModel((DataContext as TableMenuViewModel));
-        }
 
         public void btnRemove_Click(object sender, RoutedEventArgs e)
         {
+            var orderitem = (sender as Button).Tag as OrderItem;
 
-            DataRowView dataRowView = (DataRowView)((Button)e.Source).DataContext;
-
-
-            string connectionstring = "SERVER= localhost; DATABASE=projectgroup;UID=root;PASSWORD=dtn38hyj;";
-            string Query = " delete from projectgroup.order where id= '" + dataRowView[0].ToString() + "' AND itemname= '" + dataRowView[1].ToString() + "' AND itemprice= '" + dataRowView[2].ToString() + "' ;";
-            MySqlDataAdapter adapter;
-
-            MySqlConnection connection = new MySqlConnection(connectionstring);
-
-            MySqlCommand cmd = new MySqlCommand(Query, connection);
-            MySqlDataReader myReader;
-
-            try
-            {
-
-                connection.Open();
-                myReader = cmd.ExecuteReader();
-                //MessageBox.Show("Deleted");
-
-                refresh();
-
-                while (myReader.Read())
-                {
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-            connection.Close();
-
-
+            var viewmodel = DataContext as TableMenuViewModel;
+            viewmodel.OrderTable.Remove(orderitem);
         }
-
-        private void refresh()
-        {
-            string connectionstring = "SERVER= localhost; DATABASE=projectgroup;UID=root;PASSWORD=dtn38hyj;";
-
-            MySqlConnection con = new MySqlConnection(connectionstring);
-            MySqlCommand cmd = new MySqlCommand("Select id,itemname,itemprice from projectgroup.order", con);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            cmd.Dispose();
-            adapter.Dispose();
-            con.Close();
-            orderGrid.ItemsSource = dt.DefaultView;
-        }
-
-
-
 
         private void CallWaiterButton_Click(object sender, RoutedEventArgs e)
         {
 
-            kitchenform.contentControl.Content = new CallWaiterViewModel((DataContext as KitchenForm));
 
-            //contentControl.Content = new CallWaiterViewModel((DataContext as KitchenForm));
         }
 
         private void Show_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+
+            KitchenForm kitchenform = new KitchenForm();
+
             kitchenform.Show();
         }
 
         private void Proceed_Click(object sender, RoutedEventArgs e)
         {
-
-            string connectionstring = "SERVER= localhost; DATABASE=projectgroup;UID=root;PASSWORD=dtn38hyj;";
-            string Query = "insert into projectgroup.completedorder (itemname) select (itemname) from projectgroup.order ;";
-
-
-            MySqlConnection connection = new MySqlConnection(connectionstring);
-
-            MySqlCommand cmd = new MySqlCommand(Query, connection);
-            MySqlDataReader myReader;
-
-            try
-            {
-
-                connection.Open();
-                myReader = cmd.ExecuteReader();
-                // MessageBox.Show("Saved");
-
-                while (myReader.Read())
-                {
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            Tuncate();
-
-            connection.Close();
-
+            var viewmodel = DataContext as TableMenuViewModel;
+            viewmodel.SubmitOrder();
         }
 
-        private void Tuncate()
+        private void btnAddToOrder_Click(object sender, RoutedEventArgs e)
         {
-            string connectionstring = "SERVER= localhost; DATABASE=projectgroup;UID=root;PASSWORD=dtn38hyj;";
-            string Query = "TRUNCATE TABLE projectgroup.order";
+            var button = sender as Button;
 
+            var datarowview = button.Tag as DataRowView;
 
-            MySqlConnection connection = new MySqlConnection(connectionstring);
-
-            MySqlCommand cmd = new MySqlCommand(Query, connection);
-            MySqlDataReader myReader;
-
-            try
-            {
-
-                connection.Open();
-                myReader = cmd.ExecuteReader();
-                // MessageBox.Show("Saved");
-
-                while (myReader.Read())
-                {
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-
-            connection.Close();
-
-            refresh();
+            var viewmodel = DataContext as TableMenuViewModel;
+            viewmodel.OrderTable.Add(new OrderItem { ID=(int)datarowview["id"] , Name=datarowview["name"] as string , Price = datarowview["price"] as string });
         }
     }
 }

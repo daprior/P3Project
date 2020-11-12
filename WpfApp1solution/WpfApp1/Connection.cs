@@ -8,20 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using MySql.Data.MySqlClient;
-//hey
+
 namespace WpfApp1
 {
-    public class connection
+    public static class Connection
     {
 
-        MySql.Data.MySqlClient.MySqlConnection conn;
-        string myConnectionString;
+        static MySql.Data.MySqlClient.MySqlConnection conn;
+        static string myConnectionString;
         static string host = "localhost";
-        static string database = "projectgroup";//123123
+        static string database = "project";
         static string UID = "root";
         static string password = "dtn38hyj";
         public static string strProvider = "server=" + host + ";Database=" + database + ";User ID=" + UID + ";Password=" + password;
-        public bool Open()
+        public static bool Open()
         {
             try
             {
@@ -36,58 +36,118 @@ namespace WpfApp1
             }
             return false;
         }
-        public void Close()
+
+        public static void Close()
         {
             conn.Close();
             conn.Dispose();
         }
-        public DataSet ExecuteDataSet(string sql)
+
+
+        public static void AddOrder(int userid, List<int> orders)
         {
-            try
+            Open();
+
+            List<string> Rows = new List<string>();
+            foreach (var menu_id in orders)
             {
-                DataSet ds = new DataSet();
-                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
-                da.Fill(ds, "result");
-                return ds;
+                Rows.Add(string.Format("('{0}','{1}')", MySqlHelper.EscapeString(userid.ToString()), MySqlHelper.EscapeString(menu_id.ToString())));
             }
-            catch (Exception ex)
+
+            var orderstring = string.Join(",", Rows);
+
+            string Query = "insert into project.orders (user_id,menu_id) values " + orderstring + "";
+            using (var cmd = new MySqlCommand(Query, conn))
             {
-                MessageBox.Show(ex.Message);
+                cmd.ExecuteNonQuery();
             }
-            return null;
+
+            Close();
         }
-        public MySqlDataReader ExecuteReader(string sql)
+
+        public static Dictionary<int, List<int>> ReadOrders()
         {
-            try
+            Open();
+            using (var cmd = new MySqlCommand("select * from orders;", conn))
             {
-                MySqlDataReader reader;
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                reader = cmd.ExecuteReader();
-                return reader;
+
+                var reader = cmd.ExecuteReader();
+
+                var dictionaryorder = new Dictionary<int, List<int>>();
+
+                while (reader.Read())
+                {
+                    var userid = reader.GetInt32("user_id");
+                    var menuid = reader.GetInt32("menu_id");
+
+                    if (dictionaryorder.ContainsKey(userid))
+                    {
+
+                        dictionaryorder[userid].Add(menuid);
+                    }
+                    else
+                    {
+                        dictionaryorder.Add(userid, new List<int> { menuid });
+                    }
+
+                }
+                Close();
+                return dictionaryorder;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return null;
         }
-        public int ExecuteNonQuery(string sql)
+
+        public static Dictionary<int, string> MenuLookUpTable()
         {
-            try
+            Open();
+            using (var cmd = new MySqlCommand("select * from menu;", conn))
             {
-                int affected;
-                MySqlTransaction mytransaction = conn.BeginTransaction();
-                MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = sql;
-                affected = cmd.ExecuteNonQuery();
-                mytransaction.Commit();
-                return affected;
+
+                var reader = cmd.ExecuteReader();
+
+                var lookuptable = new Dictionary<int, string>();
+
+                while (reader.Read())
+                {
+                    var menuid = reader.GetInt32("id");
+                    var name = reader.GetString("name");
+
+                    lookuptable.Add(menuid, name);
+
+
+                }
+                Close();
+                return lookuptable;
             }
-            catch (Exception ex)
+        }
+
+
+        public static DataTable ReadMenu()
+        {
+            Open();
+            using (var adapter = new MySqlDataAdapter("SELECT * FROM menu", conn))
             {
-                MessageBox.Show(ex.Message);
+                var dt = new DataTable();
+                adapter.Fill(dt);
+                Close();
+
+                return dt;
             }
-            return -1;
+
+        }
+
+        public static void RemoveOrder(int userid)
+        {
+            Open();
+
+            string Query = "DELETE FROM project.orders WHERE user_id = @userid;";
+
+            using (var cmd = new MySqlCommand(Query, conn))
+            {
+                cmd.Parameters.AddWithValue("@userid", userid);
+                cmd.ExecuteNonQuery();
+            }
+
+            Close();
         }
     }
 }

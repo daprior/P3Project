@@ -38,14 +38,14 @@ namespace WpfApp1
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection con = new MySqlConnection(@"server = localhost; user id = root; password = dtn38hyj; database = projectgroup");
+            MySqlConnection con = new MySqlConnection(@"server = localhost; user id = root; password = dtn38hyj; database = project");
             MySqlDataAdapter sda = new MySqlDataAdapter("Select count(*) from users where Username ='" + txtUsername.Text + "' and Password ='" + txtPassword.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
 
             if(dt.Rows[0][0].ToString() == "1")
             {
-                MySqlDataAdapter sda1 = new MySqlDataAdapter("Select Role from users where Username ='" + txtUsername.Text + "' and Password ='" + txtPassword.Text + "'", con);
+                MySqlDataAdapter sda1 = new MySqlDataAdapter("Select Role,id from users where Username ='" + txtUsername.Text + "' and Password ='" + txtPassword.Text + "'", con);
                 DataTable dt1 = new DataTable();
                 sda1.Fill(dt1);
                 if(dt1.Rows[0][0].ToString() == "admin")
@@ -65,7 +65,7 @@ namespace WpfApp1
                 if (dt1.Rows[0][0].ToString() == "table")
                 {
                     TableMenuForm ma2 = new TableMenuForm();
-                    ma2.DataContext = new TableMenuViewModel();
+                    ma2.DataContext = new TableMenuViewModel((int)dt1.Rows[0][1]);
                     ma2.Show();
                     this.Hide();
                 }

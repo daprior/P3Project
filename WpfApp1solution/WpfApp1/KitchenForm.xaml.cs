@@ -27,16 +27,29 @@ namespace WpfApp1
 
         public KitchenForm()
         {
-            InitializeComponent();
+            DataContext = new KitchenViewModel();
 
-            OrderControl.Content = new FirstOrderViewModel(DataContext as KitchenForm);
+            InitializeComponent();
         }
 
         private void close_Click(object sender, RoutedEventArgs e)
         {
-            TableMenuForm tablemenuform = new TableMenuForm();
             this.Close();
-            tablemenuform.Show();
+        }
+
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            var button = sender as Button;
+
+            var viewmodel = button.DataContext as OrderViewModel;
+
+            viewmodel.RemoveOrder();
+
+            var kitchenviewmodel = DataContext as KitchenViewModel;
+
+            kitchenviewmodel.UpdateOrders();
         }
     }
 }
