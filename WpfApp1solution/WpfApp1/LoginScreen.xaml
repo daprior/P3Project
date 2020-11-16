@@ -9,26 +9,37 @@
         Title="Login" Height="900" Width="1600" FontSize="14" Background="#FF6AB1CF">
 
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
+
+
         <Grid>
-            <StackPanel Margin="20">
+            
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <Label Content="Login" Foreground="LightBlue" FontSize="25" HorizontalContentAlignment="Center"/>
 
-                <Separator></Separator>
+            <Label Content="Login" Foreground="LightBlue" FontSize="75" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" />
 
-                <Label Content="Username" Foreground="White" FontSize="25" HorizontalContentAlignment="Center"/>
+            <Label Content="Username" Foreground="White" FontSize="25" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
 
-                <TextBox x:Name="txtUsername" Margin="100 0" FontSize="18" BorderThickness="2" BorderBrush="White" Background="Gray" />
+            <TextBox x:Name="txtUsername" Margin="100 0" FontSize="22"  BorderThickness="2" BorderBrush="White" Background="Gray" Grid.Row="2" Grid.Column="1" TextAlignment="Center" />
 
-                <Label Content="Password" Foreground="White" FontSize="25" HorizontalContentAlignment="Center"/>
+            <Label Content="Password" Foreground="White" FontSize="25" HorizontalContentAlignment="Center" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
 
-                <TextBox Name="txtPassword" Margin="100 0" FontSize="18" BorderThickness="2" BorderBrush="White" Background="Gray" />
+            <TextBox Name="txtPassword" Margin="100 0" FontSize="22" BorderThickness="2" BorderBrush="White" Background="Gray" Grid.Row="4" Grid.Column="1" TextAlignment="Center"/>
 
-                <Label Name="Label3" Content="hey" Foreground="LightBlue" FontSize="25" HorizontalContentAlignment="Center"/>
+            <Button x:Name="btnSubmit" Content="Submit" Click="btnLogin_Click"  Background="Black" FontSize="18" BorderBrush="White" Foreground="White" Height="35" Grid.Row="5" Grid.Column="1"/>
 
-                <Button x:Name="btnSubmit" Content="Submit" Click="btnLogin_Click" Margin="200 50" Background="Gray" FontSize="18" BorderBrush="White" Foreground="White" Height="35"/>
-
-            </StackPanel>
 
             <StackPanel Width="100" HorizontalAlignment="Right">
                 <Button Margin="40,10,10,0" Style="{StaticResource MaterialDesignFloatingActionButton}" BorderBrush="#FF6AB1CF" Background="Gray" ToolTip="Close" x:Name="BtnExit" Click="btnExit_Click" Height="45" Width="Auto">

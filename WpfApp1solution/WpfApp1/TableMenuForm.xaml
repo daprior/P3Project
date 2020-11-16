@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:viewmodels="clr-namespace:WpfApp1.ViewModels"
         xmlns:views="clr-namespace:WpfApp1.Views"
+        xmlns:Converters="clr-namespace:WpfApp1.Converters"
         mc:Ignorable="d"
         Title="TableMenuForm" Height="900" Width="1600" Background="#FF6AB1CF">
     <Window.Resources>
@@ -15,6 +16,9 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.Resources>
+            <Converters:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
@@ -27,22 +31,22 @@
 
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Background="#2e3137" Height="Auto" Margin="10,10,122,10" Content="Call waiter" FontSize="20" Foreground="White" Click="CallWaiterButton_Click"></Button>
+        <Button Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Background="#2e3137" Height="Auto" Margin="10,10,122,10" Content="Call waiter" FontSize="20" Name="CallWaiterButton" Foreground="White" Click="CallWaiterButton_Click"></Button>
         <Button Grid.Row="4" Grid.Column="0" Background="#2e3137" Height="Auto" Margin="202,0,10,10" Content="Show" FontSize="20" Foreground="White" Click="Show_Click" RenderTransformOrigin="1.599,-0.13"/>
 
 
-        <Label Background="#2e3137" Content="Order" FontFamily="Comic Sans MS" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1"></Label>
+        <Label Background="#2e3137" Foreground="White" Content="Order" FontFamily="Comic Sans MS" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1"></Label>
 
-        <DataGrid Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="3" ItemsSource="{Binding OrderTable}" Name="orderGrid">
+        <DataGrid Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="3" ItemsSource="{Binding OrderTable}" Name="orderGrid" IsReadOnly="true"
+                  Background="#525252" Foreground="White">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Remove">
+                <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnRemove" Content="Remove" Tag="{Binding}" Click="btnRemove_Click" />
+                            <Button Name="btnRemove" Content="Remove" Tag="{Binding}" Click="btnRemove_Click" BorderThickness="0" Background="#2e3137" Foreground="White"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
             </DataGrid.Columns>
         </DataGrid>
 
@@ -50,20 +54,27 @@
         <Button Grid.Row="4" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1" Background="#2e3137" Height="Auto" Margin="10,10,10,10" Content="Proceed" FontSize="20" Foreground="White" Click="Proceed_Click" ></Button>
 
 
-        <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
-            Margin="10,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-            RowBackground="#fff" FontWeight="Bold" Foreground="#525252"
-            ScrollViewer.CanContentScroll="True" MaxHeight="390"
-            AlternatingRowBackground="#f2f2f2" BorderBrush="#000" BorderThickness="1"
+        <DataGrid Margin="50" Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            RowBackground="#525252" FontWeight="Bold" Foreground="White" Background="#525252"
+            ScrollViewer.CanContentScroll="True" MaxHeight="600"
+            AlternatingRowBackground="#525252" BorderBrush="#000" BorderThickness="1"
             ScrollViewer.HorizontalScrollBarVisibility="Visible"
             ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" ItemsSource="{Binding MenuTable}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Path='name'}" IsReadOnly="True" />
                 <DataGridTextColumn Header="Price" Binding="{Binding Path='price'}" IsReadOnly="True" />
+                <DataGridTemplateColumn Width="250" MinWidth="64">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding img,Converter={StaticResource ByteArrayToImageConverter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Add">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnAddToOrder" Tag="{Binding}" Content="Add" Click="btnAddToOrder_Click" />
+                            <Button Name="btnAddToOrder" Tag="{Binding}" Content="Add" Click="btnAddToOrder_Click" Background="#2e3137" Foreground="White" BorderThickness="0"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

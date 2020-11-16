@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace WpfApp1
 {
@@ -149,5 +150,6 @@ namespace WpfApp1
 
             Close();
         }
+
     }
 }

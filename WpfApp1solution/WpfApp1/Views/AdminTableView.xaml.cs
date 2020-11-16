@@ -26,27 +26,53 @@ namespace WpfApp1.Views
         {
             InitializeComponent();
 
+            tableView();
         }
 
-        private void AdminTableView_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gridview_data()
-        {
-
-        }
 
         private void DeleteUser_Click(object sender, RoutedEventArgs e)
         {
+            MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;");
 
+            string Query = "delete from project.users where (Username,Password,Role) = (@Username,@Password,@Role)";
 
+            MySqlCommand command = new MySqlCommand(Query, conn);
+            command.Parameters.AddWithValue("@Username", txtUsername);
+            command.Parameters.AddWithValue("@Password", txtUserPassword);
+            command.Parameters.AddWithValue("@Role", txtUserRole);
+
+            conn.Open();
+            command.ExecuteNonQuery(); 
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
+            MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;");
 
+            string Query = "insert into project.users (Username,Password,Role) values (@Username,@Password,@Role)";
+
+            MySqlCommand command = new MySqlCommand(Query, conn);
+            command.Parameters.AddWithValue("@Username", txtUsername.Text);
+            command.Parameters.AddWithValue("@Password", txtUserPassword.Text);
+            command.Parameters.AddWithValue("@Role", txtUserRole.Text);
+
+            conn.Open();
+            command.ExecuteNonQuery();
         }
+
+        private void tableView()
+        {
+            String query = "Select * from users";
+            using (MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;"))
+            {
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+                {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dtGrid.DataContext = ds.Tables[0];
+                }
+            }
+        }
+
     }
 }

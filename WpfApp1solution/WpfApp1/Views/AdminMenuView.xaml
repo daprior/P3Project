@@ -4,34 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Views"
+             xmlns:Converters="clr-namespace:WpfApp1.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500" Background="Gray">
-    <Grid Background="Gray">
+    <Grid>
+        <Grid.Resources>
+            <Converters:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter"/>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        
+        <Label Foreground="Black" Content="Food Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Grid.Row="0" Grid.ColumnSpan="2" />
+        <TextBox Name="txtFoodName" Background="#2e3137" BorderThickness="2" BorderBrush="White" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label Foreground="Black" Content="Price" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Grid.Row="2" Grid.ColumnSpan="2"></Label>
+        <TextBox Name="txtPrice"  Background="#2e3137" BorderThickness="2" BorderBrush="White" Grid.Row="3" Grid.ColumnSpan="2"></TextBox>
 
-        <Label Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Foreground="Black" Content="Food Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Margin="76,10,82,74" />
-        <TextBox Name="txtFoodName" Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="3" Background="#2e3137" Margin="28,26,26,35" BorderThickness="2" BorderBrush="White" Grid.Column="1"/>
-        <Label Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Foreground="Black" Content="Price" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Margin="76,65,82,19" ></Label>
-        <TextBox Name="txtPrice" Grid.Row="2" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="3" Background="#2e3137" Margin="46,60,47,0" BorderThickness="2" BorderBrush="White"></TextBox>
+        <Button Grid.Row="4" Content="Add" Background="Gray" BorderThickness="2" BorderBrush="White" Click="AddToMenu_Click" VerticalContentAlignment="Center" Margin="50 0 50 0" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"></Button>
+        <Button Grid.Row="5" Content="Delete" Background="Gray" BorderThickness="2" BorderBrush="White" Click="Delete_Click" VerticalContentAlignment="Center" Margin="50 0 50 0" Grid.ColumnSpan="2"/>
 
+        <Button Grid.Row="6" Content="Browse" Background="Gray" BorderThickness="2" BorderBrush="White" Click="Browse_Click" VerticalContentAlignment="Center" Margin="50 0 50 0" Grid.ColumnSpan="2"/>
+        <Image Grid.Row="7" Name="image1" Stretch="Fill" Grid.ColumnSpan="2" Margin="75 10 75 10"/>
 
-        <Button Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" Content="Add" Margin="25,39,58,80" Background="Gray" BorderThickness="2" BorderBrush="White" Click="AddToMenu_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Height="Auto"></Button>
-        <Button Grid.Row="3" Grid.RowSpan="2" Content="Delete" Margin="10,38,75,80" Background="Gray" BorderThickness="2" BorderBrush="White" Click="Delete_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" Height="Auto"/>
-        <Button Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" Content="Edit Price" Margin="47,39,38,79" Background="Gray" BorderThickness="2" BorderBrush="White" Click="Edit_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" Height="Auto"/>
+        <DataGrid Grid.RowSpan="9" Grid.Column="2" ItemsSource="{Binding}" Name="dtGrid">
 
-        <DataGrid Grid.Row="0" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="1" ItemsSource="{Binding}" Name="dtGrid"/>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="fheyan" Width="250" MinWidth="64">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding img,Converter={StaticResource ByteArrayToImageConverter}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -57,8 +57,5 @@ namespace WpfApp1.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        
-
     }
 }

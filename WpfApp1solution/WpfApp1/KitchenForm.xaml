@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <ItemsControl ItemsSource="{Binding AllOrders}">
-            <ItemsControl.ItemsPanel>
+            <ItemsControl.ItemsPanel> 
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
@@ -27,10 +27,14 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
-                        <ListView ItemsSource="{Binding Names}">
+                        <ListView ItemsSource="{Binding Names}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                         </ListView>
-                        <Button Grid.Row="1" Name="Remove" Click="Remove_Click" Content="Remove">
+                        <Label BorderThickness="1" BorderBrush="Black" Grid.Row="1" Foreground="White" Content="Table:" Background="Gray" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Label>
+                        <Label Grid.Row="2" Foreground="White" Content="{Binding Path='UserId'}" Background="Gray" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"> </Label>
+                        <Button Grid.Row="3" Name="Remove" Click="Remove_Click" Content="Remove">
 
                         </Button>
                     </Grid>

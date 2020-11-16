@@ -19,6 +19,8 @@ using Org.BouncyCastle.Asn1.BC;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using WpfApp1.Models;
+using System.IO;
+using System.Drawing;
 
 namespace WpfApp1
 {
@@ -27,15 +29,23 @@ namespace WpfApp1
     /// </summary>
     public partial class TableMenuForm : Window
     {
-
+        private bool _IsOn;
+        public bool IsOn
+        {
+            get
+            {
+                return _IsOn;
+            }
+            set
+            {
+                _IsOn = value;
+                CallWaiterButton.Content = _IsOn ? "Waiter called" : "Call waiter";
+            }
+        }
         public TableMenuForm()
         {
             InitializeComponent();
-
         }
-
-
-
         public void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             var orderitem = (sender as Button).Tag as OrderItem;
@@ -43,13 +53,10 @@ namespace WpfApp1
             var viewmodel = DataContext as TableMenuViewModel;
             viewmodel.OrderTable.Remove(orderitem);
         }
-
         private void CallWaiterButton_Click(object sender, RoutedEventArgs e)
         {
-
-
+            IsOn = !IsOn;
         }
-
         private void Show_Click(object sender, RoutedEventArgs e)
         {
 
@@ -57,13 +64,11 @@ namespace WpfApp1
 
             kitchenform.Show();
         }
-
         private void Proceed_Click(object sender, RoutedEventArgs e)
         {
             var viewmodel = DataContext as TableMenuViewModel;
             viewmodel.SubmitOrder();
         }
-
         private void btnAddToOrder_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
