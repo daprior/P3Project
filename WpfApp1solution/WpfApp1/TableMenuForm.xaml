@@ -38,7 +38,7 @@
         <Label Background="#2e3137" Foreground="White" Content="Order" FontFamily="Comic Sans MS" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1"></Label>
 
         <DataGrid Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="3" ItemsSource="{Binding OrderTable}" Name="orderGrid" IsReadOnly="true"
-                  Background="#525252" Foreground="White">
+                  Background="#525252" Foreground="White" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

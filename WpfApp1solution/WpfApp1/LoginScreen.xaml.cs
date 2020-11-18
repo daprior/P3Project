@@ -43,18 +43,18 @@ namespace WpfApp1
             DataTable dt = new DataTable();
             sda.Fill(dt);
 
-            if(dt.Rows[0][0].ToString() == "1")
+            if (dt.Rows[0][0].ToString() == "1")
             {
                 MySqlDataAdapter sda1 = new MySqlDataAdapter("Select Role,id from users where Username ='" + txtUsername.Text + "' and Password ='" + txtPassword.Text + "'", con);
                 DataTable dt1 = new DataTable();
                 sda1.Fill(dt1);
-                if(dt1.Rows[0][0].ToString() == "admin")
-                {
 
+
+                if (dt1.Rows[0][0].ToString() == "admin")
+                {
                     MenuAdmin ma = new MenuAdmin();
                     ma.Show();
                     this.Hide();
-
                 }
                 if (dt1.Rows[0][0].ToString() == "kitchen")
                 {
@@ -70,7 +70,6 @@ namespace WpfApp1
                     this.Hide();
                 }
             }
-
         }
     }
 }
