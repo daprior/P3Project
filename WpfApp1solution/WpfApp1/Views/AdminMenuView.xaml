@@ -42,7 +42,7 @@
         <DataGrid Grid.RowSpan="9" Grid.Column="2" ItemsSource="{Binding}" Name="dtGrid">
 
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="fheyan" Width="250" MinWidth="64">
+                <DataGridTemplateColumn Header="Image" Width="250" MinWidth="64">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding img,Converter={StaticResource ByteArrayToImageConverter}}"/>

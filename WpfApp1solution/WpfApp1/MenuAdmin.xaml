@@ -23,24 +23,18 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel>
-            <Button Content="Menu" Click="btnMenu_Click" Background="#FF6AB1CF"></Button>
-            <Button Content="Table" Click="btnTable_Click" Background="#FF6AB1CF"></Button>
-        </StackPanel>
+
+        <Button Grid.Column="0" Grid.Row="0" Content="Menu" Click="btnMenu_Click" Background="#FF6AB1CF" Height="300" MinHeight="50" MaxHeight="300"></Button>
+        <Button Grid.Column="0" Grid.Row="1" Content="Table" Click="btnTable_Click" Background="#FF6AB1CF" Height="300" MinHeight="50" MaxHeight="300"></Button>
+
 
         <ContentControl  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5"  Content="{Binding}"/>
 

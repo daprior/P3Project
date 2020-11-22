@@ -121,7 +121,6 @@ namespace WpfApp1
             }
         }
 
-
         public static DataTable ReadMenu()
         {
             Open();

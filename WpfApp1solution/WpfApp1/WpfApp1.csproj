@@ -119,6 +119,9 @@
     <Compile Include="TableMenuForm.xaml.cs">
       <DependentUpon>TableMenuForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="test.xaml.cs">
+      <DependentUpon>test.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CallWaiterViewModel.cs" />
     <Compile Include="ViewModels\FirstOrderViewModel.cs" />
     <Compile Include="ViewModels\KitchenViewModel.cs" />
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TableMenuForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -61,7 +61,7 @@ namespace WpfApp1.ViewModels
 
             OrderTable.Clear();
         }
-
+        
 
 
         public event PropertyChangedEventHandler PropertyChanged;

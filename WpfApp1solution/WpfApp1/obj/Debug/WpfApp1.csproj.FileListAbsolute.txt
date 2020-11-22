@@ -107,3 +107,5 @@ C:\Users\danie\OneDrive\Skrivebord\GithubDesktop\P3Project\WpfApp1solution\WpfAp
 C:\Users\danie\OneDrive\Skrivebord\GithubDesktop\P3Project\WpfApp1solution\WpfApp1\obj\Debug\Views\AdminTableView.baml
 C:\Users\danie\OneDrive\Skrivebord\GithubDesktop\P3Project\WpfApp1solution\WpfApp1\obj\Debug\Views\CallWaiterView.g.cs
 C:\Users\danie\OneDrive\Skrivebord\GithubDesktop\P3Project\WpfApp1solution\WpfApp1\obj\Debug\Views\CallWaiterView.baml
+C:\Users\danie\OneDrive\Skrivebord\GithubDesktop\P3Project\WpfApp1solution\WpfApp1\obj\Debug\test.g.cs
+C:\Users\danie\OneDrive\Skrivebord\GithubDesktop\P3Project\WpfApp1solution\WpfApp1\obj\Debug\test.baml
