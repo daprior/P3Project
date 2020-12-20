@@ -31,13 +31,13 @@
 
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Background="#2e3137" Height="Auto" Margin="10,10,122,10" Content="Call waiter" FontSize="20" Name="CallWaiterButton" Foreground="White" Click="CallWaiterButton_Click"></Button>
-        <Button Grid.Row="4" Grid.Column="0" Background="#2e3137" Height="Auto" Margin="202,0,10,10" Content="Show" FontSize="20" Foreground="White" Click="Show_Click" RenderTransformOrigin="1.599,-0.13"/>
+        <Button Grid.Row="4" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Background="#2e3137" Height="Auto" Margin="10,10,10,10" Content="Call waiter" FontSize="20" Name="CallWaiterButton" Foreground="White" Click="CallWaiterButton_Click"></Button>
+        <!--<Button Grid.Row="4" Grid.Column="0" Background="#2e3137" Height="Auto" Margin="202,0,10,10" Content="Show" FontSize="20" Foreground="White" Click="Show_Click" RenderTransformOrigin="1.599,-0.13"/>-->
 
 
-        <Label Background="#2e3137" Foreground="White" Content="Order" FontFamily="Comic Sans MS" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1"></Label>
+        <Label Margin="0 10 10 0" Background="#2e3137" Foreground="White" Content="Order" FontFamily="Apple Braille" FontSize="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1"></Label>
 
-        <DataGrid Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="3" ItemsSource="{Binding OrderTable}" Name="orderGrid" IsReadOnly="true"
+        <DataGrid Margin="0 0 10 0" Grid.Row="1" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="3" ItemsSource="{Binding OrderTable}" Name="orderGrid" IsReadOnly="true"
                   Background="#525252" Foreground="White" >
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
@@ -54,10 +54,10 @@
         <Button Grid.Row="4" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1" Background="#2e3137" Height="Auto" Margin="10,10,10,10" Content="Proceed" FontSize="20" Foreground="White" Click="Proceed_Click" ></Button>
 
 
-        <DataGrid Margin="50" Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+        <DataGrid Margin="10 10 10 0" Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
             RowBackground="#525252" FontWeight="Bold" Foreground="White" Background="#525252"
-            ScrollViewer.CanContentScroll="True" MaxHeight="600"
+            ScrollViewer.CanContentScroll="True" MaxHeight="800"
             AlternatingRowBackground="#525252" BorderBrush="#000" BorderThickness="1"
             ScrollViewer.HorizontalScrollBarVisibility="Visible"
             ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" ItemsSource="{Binding MenuTable}">

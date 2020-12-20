@@ -29,9 +29,9 @@
         </Grid.RowDefinitions>
         
         <Label Foreground="Black" Content="Food Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Grid.Row="0" Grid.ColumnSpan="2" />
-        <TextBox Name="txtFoodName" Background="#2e3137" BorderThickness="2" BorderBrush="White" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox Name="txtFoodName" FontSize="20" Background="#2e3137" BorderThickness="2" BorderBrush="White" Grid.Row="1" Grid.ColumnSpan="2" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Foreground="Black" Content="Price" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Grid.Row="2" Grid.ColumnSpan="2"></Label>
-        <TextBox Name="txtPrice"  Background="#2e3137" BorderThickness="2" BorderBrush="White" Grid.Row="3" Grid.ColumnSpan="2"></TextBox>
+        <TextBox Name="txtPrice"  Background="#2e3137" BorderThickness="2" BorderBrush="White" Grid.Row="3" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="White" FontSize="20"></TextBox>
 
         <Button Grid.Row="4" Content="Add" Background="Gray" BorderThickness="2" BorderBrush="White" Click="AddToMenu_Click" VerticalContentAlignment="Center" Margin="50 0 50 0" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"></Button>
         <Button Grid.Row="5" Content="Delete" Background="Gray" BorderThickness="2" BorderBrush="White" Click="Delete_Click" VerticalContentAlignment="Center" Margin="50 0 50 0" Grid.ColumnSpan="2"/>

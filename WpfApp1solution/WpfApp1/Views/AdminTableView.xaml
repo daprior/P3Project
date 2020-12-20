@@ -27,11 +27,11 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Grid.ColumnSpan="2" Foreground="Black" Content="Username" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"  />
-        <TextBox Grid.Row="1" Grid.ColumnSpan="2" Name="txtUsername" Background="#2e3137"  BorderThickness="2" BorderBrush="White" TextAlignment="Center" />
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2" Name="txtUsername" Background="#2e3137"  BorderThickness="2" BorderBrush="White" TextAlignment="Center" FontSize="20"  Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         <Label Grid.Row="2" Grid.ColumnSpan="2" Foreground="Black" Content="Password" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"  />
-        <TextBox TextAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Name="txtUserPassword" Background="#2e3137" BorderThickness="2" BorderBrush="White"></TextBox>
+        <TextBox TextAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" Name="txtUserPassword" Background="#2e3137" BorderThickness="2" BorderBrush="White" FontSize="20" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
         <Label Grid.Row="4" Grid.ColumnSpan="2" Foreground="Black" Content="Role" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15"  />
-        <TextBox TextAlignment="Center" Grid.Row="5" Grid.ColumnSpan="2" Name="txtUserRole" Background="#2e3137"  BorderThickness="2" BorderBrush="White"></TextBox>
+        <TextBox TextAlignment="Center" Grid.Row="5" Grid.ColumnSpan="2" Name="txtUserRole" Background="#2e3137"  BorderThickness="2" BorderBrush="White" FontSize="20" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
 
         <Button Grid.Row="6" Grid.ColumnSpan="2" Content="Add" Background="Gray" BorderThickness="2" BorderBrush="White" Click="AddUser_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="Auto" Margin="50 5 50 5"></Button>
