@@ -10,7 +10,6 @@
 
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
 
-
         <Grid>
             
         <Grid.ColumnDefinitions>

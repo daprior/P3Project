@@ -54,7 +54,7 @@
         <Button Grid.Row="4" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="1" Background="#2e3137" Height="Auto" Margin="10,10,10,10" Content="Proceed" FontSize="20" Foreground="White" Click="Proceed_Click" ></Button>
 
 
-        <DataGrid Margin="10 10 10 0" Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+        <DataGrid Margin="10 10 10 0" Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
             RowBackground="#525252" FontWeight="Bold" Foreground="White" Background="#525252"
             ScrollViewer.CanContentScroll="True" MaxHeight="800"

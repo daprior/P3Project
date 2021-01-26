@@ -31,18 +31,18 @@ namespace WpfApp1
         }
 
 
-        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        private void btnMenu_Click(object sender, RoutedEventArgs e)   // Skifter til menu view
         {
             DataContext = new MenuViewModel();
         }
 
-        private void btnTable_Click(object sender, RoutedEventArgs e)
+        private void btnTable_Click(object sender, RoutedEventArgs e)   // Skifter til table view 
         {
             DataContext = new TableViewModel();
         }
 
 
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        private void BtnExit_Click(object sender, RoutedEventArgs e)  // lukker program
         {
             MenuAdmin newWindow = new MenuAdmin();
             Application.Current.MainWindow = newWindow;

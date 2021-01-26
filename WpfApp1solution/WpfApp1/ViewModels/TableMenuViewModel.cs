@@ -15,7 +15,7 @@ using WpfApp1.Models;
 
 namespace WpfApp1.ViewModels
 {
-    public class TableMenuViewModel : INotifyPropertyChanged
+    public class TableMenuViewModel : INotifyPropertyChanged 
     {
 
         private ObservableCollection<OrderItem> ordertable = new ObservableCollection<OrderItem>();
@@ -31,7 +31,7 @@ namespace WpfApp1.ViewModels
 
         private DataTable menuTable;
 
-        public DataTable MenuTable
+        public DataTable MenuTable 
         {
             get { return menuTable; }
             set
@@ -43,12 +43,12 @@ namespace WpfApp1.ViewModels
 
         public int Userid { get; }
 
-        public TableMenuViewModel(int userid)
+        public TableMenuViewModel(int userid)  
         {
             MenuTable = Connection.ReadMenu();
             Userid = userid;
         }
-        public void SubmitOrder()
+        public void SubmitOrder() // når bruger trykker proceed. Clear også listen.
         {
             var orders = new List<int>();
 
@@ -64,8 +64,8 @@ namespace WpfApp1.ViewModels
         
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChange([CallerMemberName] string propertyName = "")
+        public event PropertyChangedEventHandler PropertyChanged;   // Event, der skal ske noget når en property skifter.
+        private void RaisePropertyChange([CallerMemberName] string propertyName = "")   // Skifter status på noget, når property skifter.
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

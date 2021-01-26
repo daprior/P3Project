@@ -46,30 +46,30 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-        public void btnRemove_Click(object sender, RoutedEventArgs e)
+        public void btnRemove_Click(object sender, RoutedEventArgs e) // Fjerner noget fra ordren.
         {
             var orderitem = (sender as Button).Tag as OrderItem;
 
             var viewmodel = DataContext as TableMenuViewModel;
             viewmodel.OrderTable.Remove(orderitem);
         }
-        private void CallWaiterButton_Click(object sender, RoutedEventArgs e)
+        private void CallWaiterButton_Click(object sender, RoutedEventArgs e) // metode til at kalde waiter, virker ikke rigtigt.
         {
             IsOn = !IsOn;
         }
-        private void Show_Click(object sender, RoutedEventArgs e)
+        private void Show_Click(object sender, RoutedEventArgs e)  // bruges ikke. Men viser tabbellen. 
         {
 
             KitchenForm kitchenform = new KitchenForm();
 
             kitchenform.Show();
         }
-        private void Proceed_Click(object sender, RoutedEventArgs e)
+        private void Proceed_Click(object sender, RoutedEventArgs e) // når brugeren trykker proceed, bliver den sendt vedere af metoden SubmidORder() der sætter det ind i databasen, så køkkenet kan se ordren. 
         {
             var viewmodel = DataContext as TableMenuViewModel;
-            viewmodel.SubmitOrder();
+            viewmodel.SubmitOrder(); // metode fra connection.
         }
-        private void btnAddToOrder_Click(object sender, RoutedEventArgs e)
+        private void btnAddToOrder_Click(object sender, RoutedEventArgs e) // adder til menu table som er et dictionary der holder ordren indtil den er sendt videre.
         {
             var button = sender as Button;
 

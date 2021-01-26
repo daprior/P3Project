@@ -31,12 +31,12 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
+        private void btnExit_Click(object sender, RoutedEventArgs e) // lukker programmet
         {
             Application.Current.Shutdown();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e) //login til bruger
         {
             MySqlConnection con = new MySqlConnection(@"server = localhost; user id = root; password = dtn38hyj; database = project");
             MySqlDataAdapter sda = new MySqlDataAdapter("Select count(*) from users where Username ='" + txtUsername.Text + "' and Password ='" + txtPassword.Text + "'", con);
@@ -65,7 +65,7 @@ namespace WpfApp1
                 if (dt1.Rows[0][0].ToString() == "table")
                 {
                     TableMenuForm ma2 = new TableMenuForm();
-                    ma2.DataContext = new TableMenuViewModel((int)dt1.Rows[0][1]);
+                    ma2.DataContext = new TableMenuViewModel((int)dt1.Rows[0][1]);   // Datacontext skal med, til at se hvilken bruger der bestiller ordre.
                     ma2.Show();
                     this.Hide();
                 }

@@ -36,7 +36,7 @@ namespace WpfApp1.Views
             tableView();
         }
 
-        public void imgbytearray()
+        public void imgbytearray() 
         {
             //Initialize a file stream to read the image file
             FileStream fs = new FileStream(imageName, FileMode.Open, FileAccess.Read);
@@ -52,7 +52,7 @@ namespace WpfApp1.Views
         }
 
 
-        private void AddToMenu_Click(object sender, RoutedEventArgs e)
+        private void AddToMenu_Click(object sender, RoutedEventArgs e)   // Tilføjer til databasen.
         {
             MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;");
 
@@ -85,7 +85,7 @@ namespace WpfApp1.Views
 
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private void Delete_Click(object sender, RoutedEventArgs e) // Sletter fra databasen
         {
             MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;");
 
@@ -101,14 +101,14 @@ namespace WpfApp1.Views
         }
 
 
-        public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)
+        public System.Drawing.Image byteArrayToImage(byte[] byteArrayIn)  // Returner image fra bytearray.
         {
             MemoryStream ms = new MemoryStream(byteArrayIn);
             System.Drawing.Image returnImage = System.Drawing.Image.FromStream(ms);
             return returnImage;
         }
 
-        private void tableView()
+        private void tableView()  // vælger alle brugere og sætter dem i et dataset.
         {
             String query = "Select * from menu";
             using (MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;"))

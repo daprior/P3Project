@@ -30,7 +30,7 @@ namespace WpfApp1.Views
         }
 
 
-        private void DeleteUser_Click(object sender, RoutedEventArgs e)
+        private void DeleteUser_Click(object sender, RoutedEventArgs e) // sletter bruger
         {
             MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;");
 
@@ -45,7 +45,7 @@ namespace WpfApp1.Views
             command.ExecuteNonQuery(); 
         }
 
-        private void AddUser_Click(object sender, RoutedEventArgs e)
+        private void AddUser_Click(object sender, RoutedEventArgs e)   // tilføjer bruger
         {
             MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;");
 
@@ -60,7 +60,7 @@ namespace WpfApp1.Views
             command.ExecuteNonQuery();
         }
 
-        private void tableView()
+        private void tableView()  // vælger alle brugere og sætter dem i et dataset.
         {
             String query = "Select * from users";
             using (MySqlConnection conn = new MySqlConnection("Server = localhost; Database = project; User Id = root; Password = dtn38hyj;"))

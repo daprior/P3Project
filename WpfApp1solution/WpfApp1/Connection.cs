@@ -22,7 +22,7 @@ namespace WpfApp1
         static string UID = "root";
         static string password = "dtn38hyj";
         public static string strProvider = "server=" + host + ";Database=" + database + ";User ID=" + UID + ";Password=" + password;
-        public static bool Open()
+        public static bool Open() // til at åbne connectionen.
         {
             try
             {
@@ -38,14 +38,14 @@ namespace WpfApp1
             return false;
         }
 
-        public static void Close()
+        public static void Close() // slutter connectionen.
         {
             conn.Close();
             conn.Dispose();
         }
 
 
-        public static void AddOrder(int userid, List<int> orders)
+        public static void AddOrder(int userid, List<int> orders) // sætter dem ind i database.
         {
             Open();
 
@@ -66,7 +66,7 @@ namespace WpfApp1
             Close();
         }
 
-        public static Dictionary<int, List<int>> ReadOrders()
+        public static Dictionary<int, List<int>> ReadOrders() // Køkkenet der ser ordren. Selecter alt fra databasen i kitchen view.
         {
             Open();
             using (var cmd = new MySqlCommand("select * from orders;", conn))
@@ -97,7 +97,7 @@ namespace WpfApp1
             }
         }
 
-        public static Dictionary<int, string> MenuLookUpTable()
+        public static Dictionary<int, string> MenuLookUpTable() // table der bliver lavet inden kitchen skal se dem. 
         {
             Open();
             using (var cmd = new MySqlCommand("select * from menu;", conn))
@@ -121,7 +121,7 @@ namespace WpfApp1
             }
         }
 
-        public static DataTable ReadMenu()
+        public static DataTable ReadMenu() // læser menuen
         {
             Open();
             using (var adapter = new MySqlDataAdapter("SELECT * FROM menu", conn))
@@ -135,7 +135,7 @@ namespace WpfApp1
 
         }
 
-        public static void RemoveOrder(int userid)
+        public static void RemoveOrder(int userid) // fjerner en ordre fra kitchen viewet.
         {
             Open();
 
